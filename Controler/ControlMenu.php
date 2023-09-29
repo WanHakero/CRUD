@@ -3,7 +3,7 @@
 	require('../Model/model.php');
 	require('../Vue/Menu.php');
 
-	echo "aaaa";
+	
 	$choix = $_POST['btn'];
 
 	if($choix == "Produit"){
@@ -29,7 +29,7 @@
 		$id = $_POST['id'];
 
 		$produit = getProduitParID($id);
-		echo $produit['idProduit'];
+		
 		require("../Vue/ModifierProduit.php");
 
 	}
