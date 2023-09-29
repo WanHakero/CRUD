@@ -8,9 +8,9 @@ function conexionBDD(){
 	$connexion = new PDO("mysql:host=".$servername.";dbname=crud;charset=utf8", $username, $password);
 
 	if (!$connexion) {
-	  echo"Conexion FAUX: ";
+	  echo"Erreur de connexion ";
 	}
-	echo "Conexion VRAI";
+	
 	return $connexion;
 }
 
@@ -30,7 +30,7 @@ function getProduitParID($id){
 	$bdd = conexionBDD();
 	
 	$requete ="SELECT idProduit,reference,description,priceTaxIncl,priceTaxExcl,quantity,idLang FROM produit WHERE `idProduit` = ".$id ;
-	ECHO $requete;
+	
 	$produitID = $bdd ->query($requete);
 	$ligne = $produitID->fetch();
 	
@@ -49,7 +49,7 @@ function ajoutProduit($tabProduit){
 	$bdd = conexionBDD();
 	$requete="INSERT INTO produit(reference,description,priceTaxIncl,priceTaxExcl,idLang,quantity) 
 	VALUE ('".$tabProduit['reference']."', '".$tabProduit['description']."', '".$tabProduit['priceTaxIncl']."','".$tabProduit['priceTaxExcl']."','".$tabProduit['idLang']."','".$tabProduit['quantity']."')";
-	echo $requete;
+	
 	$bdd ->query($requete);
 };
 
